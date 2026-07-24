@@ -25,7 +25,7 @@ const translateX = ref(0);
 const minX = ref(0);
 
 const slideRef = ref(null);
-const forecastRef = ref(null);
+const slideWrapperRef = ref(null);
 const cardRefs = ref([]);
 
 let startX = 0;
@@ -36,20 +36,20 @@ watch(
   () => forecastData,
   async () => {
     await nextTick();
-    minX.value = forecastRef.value.offsetWidth - slideRef.value.scrollWidth;
+    minX.value = slideWrapperRef.value.offsetWidth - slideRef.value.scrollWidth;
   },
   { deep: true }
 );
 
 const startDrag = (e) => {
   isDragging.value = true;
-  startX = e.clientX;
+  startX = e.pageX;
   e.currentTarget.setPointerCapture(e.pointerId);
 };
 
 const moveDrag = (e) => {
   if (!isDragging.value) return;
-  moveX = e.clientX - startX;
+  moveX = e.pageX - startX;
   const total = prevX + moveX;
   if (total > 0) {
     translateX.value = 0;
@@ -94,7 +94,7 @@ const clickDayBtn = (day, index) => {
 
 <template>
   <div class="forecast" ref="forecastRef">
-    <div class="slideWrapper">
+    <div class="slideWrapper" ref="slideWrapperRef">
       <div class="slide" :class="{ noTransition: isDragging }" ref="slideRef" @pointerdown="startDrag"
         @pointermove="moveDrag" @pointerup="endDrag" :style="{ transform: `translateX(${translateX}px)` }">
         <div v-for="(item, index) in forecastData" :key="index" :class="{ active: item.day === selectedDay }"
