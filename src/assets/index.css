@@ -1,0 +1,580 @@
+:root {
+  --left-width: 500px;
+  --right-width: 700px;
+  --border: 1px solid rgba(0, 0, 0, .4);
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  padding: 20px 50px;
+  gap: 30px;
+}
+
+.wrap .left {
+  flex: 1 1 400px;
+  max-width: 500px;
+}
+
+h1 {
+  font-size: 50px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.favor {
+  height: 600px;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+}
+
+.favor .favorHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.favor .favorHead button {
+  font-size: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.favor .favorList {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.favor .favorList>div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  border: 2px solid #bbb;
+  width: 100%;
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.favor .favorList>div .reName {
+  width: 100%;
+}
+
+.favor .favorList>div .reName input {
+  font-size: 16px;
+  color: #fff;
+  width: 100%;
+}
+
+.favor .favorList>div .iconBox {
+  display: flex;
+  gap: 10px;
+}
+
+.favor .favorList>div .iconBox>div>img {
+  width: 30px;
+  height: 30px;
+}
+
+.highlight {
+  /* border-color: rgb(93, 93, 228); */
+  background-color: rgb(101 101 237);
+  color: #fff;
+}
+
+.currentLocation {
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.currentLocation div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.currentLocation div.isCurrentFavor>span:nth-of-type(1) {
+  font-size: 35px;
+  margin-right: 10px;
+}
+
+.currentLocation div.isCurrentFavor>span:nth-of-type(2) {
+  font-size: 15px;
+  color: #747477;
+  align-self: flex-end;
+}
+
+.currentLocation>div button>img {
+  margin-left: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+.inputArea {
+  position: relative;
+  margin-bottom: 10px;
+  background: #eef7ff;
+  display: flex;
+  gap: 5px;
+  font-size: 25px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+}
+
+.inputArea.on {
+  border-radius: 10px 10px 0 0;
+  border-bottom: none;
+}
+
+.inputArea input {
+  padding-left: 10px;
+  flex: 1;
+  font-size: 15px;
+}
+
+.inputArea button {
+  padding: 3px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.inputArea button .searchLottie {
+  transform: scale(5);
+  transform-origin: center;
+}
+
+.inputArea button .searchLottie {
+  pointer-events: none;
+}
+
+.inputArea .recentBox {
+  width: calc(100% + 2px);
+  border: 1px solid rgba(0, 0, 0, .4);
+  border-top: none;
+  position: absolute;
+  top: 36px;
+  left: -1px;
+  font-size: 20px;
+  line-height: 35px;
+  padding: 0px;
+  text-indent: 30px;
+  z-index: 999;
+  background: #eef7ff;
+  border-radius: 0 0 10px 10px;
+  display: none;
+}
+
+.inputArea.on .recentBox {
+  padding: 10px 0 20px 0;
+  display: block;
+}
+
+.inputArea.on input {
+  border-bottom: 1px solid rgba(0, 0, 0, .4);
+}
+
+.inputArea .recentBox .recentItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputArea.on .recentBox .recentItem:hover {
+  background-color: #dceeff;
+}
+
+.pulse {
+  animation: pulse 0.8s ease infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse2 {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.02);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.mapWrap {
+  position: relative;
+  margin-bottom: 10px;
+  z-index: 999;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 7 / 5;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+.weatherBox {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+
+  width: 300px;
+  max-height: 300px;
+
+  padding: 10px 20px;
+
+  line-height: 35px;
+  font-size: 25px;
+
+  border: 2px solid #bbb;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+
+  color: #fff;
+
+  overflow: hidden;
+
+  transition:
+    width 0.1s ease,
+    max-height 0.1s ease,
+    padding 0.1s ease,
+    border-radius 0.1s ease;
+}
+
+
+/* 글자 영역 */
+.weatherBox p {
+  transition:
+    opacity 0.1s ease,
+    transform 0.1s ease;
+}
+
+
+/* 최소화 상태 */
+.weatherBox.mini {
+  width: 30px;
+  max-height: 30px;
+
+  padding: 0;
+
+  border-radius: 50%;
+}
+
+
+/* 글자 접히는 효과 */
+.weatherBox.mini p {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+
+
+/* 버튼 */
+.weatherBox button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+
+  width: 30px;
+  height: 30px;
+
+  font-size: 20px;
+  line-height: 0px;
+
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+
+/* 최소화 됐을 때 버튼 위치 */
+.weatherBox.mini button {
+  top: -2px;
+  right: -2px;
+}
+
+.wrap .right {
+  flex: 1 1 600px;
+  max-width: 700px;
+}
+
+.forecast {
+  width: 100%;
+  height: 226px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+}
+
+.forecast .slide {
+  width: fit-content;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  user-select: none;
+  margin-bottom: 20px;
+  transition: 0.5s;
+}
+
+.forecast .slide.noTransition {
+  transition: none;
+}
+
+.forecast .slide>* {
+  pointer-events: none;
+}
+
+.forecast .slide div {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+.forecast .slide div.active {
+  border: 1px solid blue !important;
+  animation: pulse2 0.8s ease infinite;
+}
+
+.forecast .slide div span {
+  text-align: center;
+}
+
+.forecast .slide div:not(.forecastWeather) {
+  padding: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.forecast .btnWrap {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.forecast .btnWrap button {
+  padding: 5px 10px;
+  width: 15%;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.forecast .btnWrap button.highlight {
+  border: 1px solid blue;
+}
+
+
+
+
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: -999;
+  overflow: hidden;
+  background: linear-gradient(160deg,
+      #eef7ff 0%,
+      #e3f2fd 45%,
+      #f5fbff 100%);
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(180px);
+  opacity: .9;
+  animation: float 25s ease-in-out infinite alternate;
+}
+
+.blob1 {
+  width: 450px;
+  height: 450px;
+  background: #b8e6ff;
+  top: -120px;
+  left: -120px;
+}
+
+.blob2 {
+  width: 500px;
+  height: 500px;
+  background: #d6c9ff;
+  bottom: -150px;
+  right: -120px;
+  animation-duration: 30s;
+}
+
+.blob3 {
+  width: 380px;
+  height: 380px;
+  background: #c9f7f5;
+  left: 40%;
+  top: 35%;
+  animation-duration: 22s;
+}
+
+@keyframes float {
+
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(120px, -80px) scale(1.2);
+  }
+
+  100% {
+    transform: translate(-80px, 100px) scale(.9);
+  }
+
+}
+
+@media (max-width: 900px) {
+
+  .wrap {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .wrap .left,
+  .wrap .right {
+    width: 100%;
+    max-width: 700px;
+  }
+
+}
+
+/* .mobileFixedBg {
+  display: none;
+} */
+
+@media (max-width:600px) {
+
+  /* 현재 위치 + 검색창 고정 */
+
+  h1,
+  .currentLocation,
+  .inputArea {
+    position: fixed;
+    left: 10px;
+    right: 10px;
+    z-index: 1000;
+
+    /* 기존 배경과 자연스럽게 */
+    background: rgba(238, 247, 255, 0.75);
+    /* backdrop-filter: blur(10px); */
+  }
+
+
+  .currentLocation {
+    top: 50px;
+  }
+
+
+  .inputArea {
+    top: 135px;
+  }
+
+
+  /* fixed로 빠진 공간 확보 */
+  .wrap .left {
+    padding-top: 160px;
+  }
+
+
+  /* 모바일 크기 조정 */
+  h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+
+  .favor {
+    height: auto;
+    min-height: 400px;
+  }
+
+
+  .mapWrap {
+    aspect-ratio: 1 / 1;
+  }
+
+
+  .weatherBox {
+    width: 220px;
+    max-height: 220px;
+    padding: 10px;
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+
+  .forecast {
+    height: 200px;
+  }
+
+
+  .forecast .btnWrap button {
+    font-size: 14px;
+    padding: 5px;
+  }
+
+}

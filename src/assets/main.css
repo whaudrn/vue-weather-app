@@ -1,0 +1,31 @@
+/* @import './base.css';
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+  padding: 3px;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+#app {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+}
+
+#app h1 {font-size: 50px;text-align: center;margin-bottom: 50px;grid-column: 1 / span 2;}
+#app .infoBox {display: flex;flex-direction: column;}
+#app div {width: 400px;height: 200px;display: flex;justify-content: center;align-items: center;border: 1px solid red; margin-bottom: 5px;font-size: 30px;} */
