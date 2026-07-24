@@ -369,7 +369,6 @@ h1 {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 10px;
   gap: 10px;
   user-select: none;
   margin-bottom: 20px;
@@ -568,12 +567,13 @@ h1 {
 
 
   .forecast {
-    height: 200px;
+    padding: 10px;
+    height: auto;
   }
 
   .forecast .btnWrap {
-     flex-wrap: wrap;
-  gap: 8px;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 
   .forecast .btnWrap button {
