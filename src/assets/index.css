@@ -492,7 +492,6 @@ h1 {
 @media (max-width: 900px) {
 
   .wrap {
-    flex-direction: column;
     padding: 20px;
   }
 
