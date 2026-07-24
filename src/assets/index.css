@@ -516,8 +516,8 @@ h1 {
   .currentLocation,
   .inputArea {
     position: fixed;
-    left: 10px;
-    right: 10px;
+    left: 20px;
+    right: 20px;
     z-index: 1000;
 
     /* 기존 배경과 자연스럽게 */
