@@ -20,7 +20,7 @@ button {
 .wrap {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   min-height: 100vh;
   padding: 20px 50px;
@@ -39,7 +39,7 @@ h1 {
 }
 
 .favor {
-  height: 600px;
+  height: auto;
   padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.4);
   border-radius: 10px;
@@ -550,7 +550,6 @@ h1 {
 
 
   .favor {
-    height: auto;
     min-height: 400px;
   }
 
