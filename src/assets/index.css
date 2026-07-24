@@ -356,14 +356,17 @@ h1 {
 }
 
 .forecast {
+  padding: 20px;
   width: 100%;
   height: 226px;
-  overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.4);
   border-radius: 10px;
 }
-
-.forecast .slide {
+.forecast .slideWrapper {
+  overflow: hidden;
+}
+.forecast .slideWrapper .slide {
+  padding: 2px;
   width: fit-content;
   touch-action: pan-y;
   display: flex;
@@ -375,30 +378,30 @@ h1 {
   transition: 0.5s;
 }
 
-.forecast .slide.noTransition {
+.forecast .slideWrapper .slide.noTransition {
   transition: none;
 }
 
-.forecast .slide>* {
+.forecast .slideWrapper .slide>* {
   pointer-events: none;
 }
 
-.forecast .slide div {
+.forecast .slideWrapper .slide div {
   display: flex;
   flex-direction: column;
   border-radius: 10px;
 }
 
-.forecast .slide div.active {
+.forecast .slideWrapper .slide div.active {
   border: 1px solid blue !important;
   animation: pulse2 0.8s ease infinite;
 }
 
-.forecast .slide div span {
+.forecast .slideWrapper .slide div span {
   text-align: center;
 }
 
-.forecast .slide div:not(.forecastWeather) {
+.forecast .slideWrapper .slide div:not(.forecastWeather) {
   padding: 5px;
   border: 1px solid rgba(0, 0, 0, 0.4);
 }
@@ -406,7 +409,7 @@ h1 {
 .forecast .btnWrap {
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -567,7 +570,6 @@ h1 {
 
 
   .forecast {
-    padding: 10px;
     height: auto;
   }
 

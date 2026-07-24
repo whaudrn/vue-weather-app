@@ -94,14 +94,16 @@ const clickDayBtn = (day, index) => {
 
 <template>
   <div class="forecast" ref="forecastRef">
-    <div class="slide" :class="{ noTransition: isDragging }" ref="slideRef" @pointerdown="startDrag"
-      @pointermove="moveDrag" @pointerup="endDrag" :style="{ transform: `translateX(${translateX}px)` }">
-      <div v-for="(item, index) in forecastData" :key="index" :class="{ active: item.day === selectedDay }"
-        :ref="el => cardRefs[index] = el">
-        <span>{{ item.day }}</span>
-        <span>{{ item.time }}</span>
-        <Vue3Lottie class="forecastWeather" :animationData="weatherLottieMap[item.weather]" :width="30" :height="30" />
-        <span>{{ item.temp }}℃</span>
+    <div class="slideWrapper">
+      <div class="slide" :class="{ noTransition: isDragging }" ref="slideRef" @pointerdown="startDrag"
+        @pointermove="moveDrag" @pointerup="endDrag" :style="{ transform: `translateX(${translateX}px)` }">
+        <div v-for="(item, index) in forecastData" :key="index" :class="{ active: item.day === selectedDay }"
+          :ref="el => cardRefs[index] = el">
+          <span>{{ item.day }}</span>
+          <span>{{ item.time }}</span>
+          <Vue3Lottie class="forecastWeather" :animationData="weatherLottieMap[item.weather]" :width="30" :height="30" />
+          <span>{{ item.temp }}℃</span>
+        </div>
       </div>
     </div>
     <div class="btnWrap">
