@@ -86,6 +86,7 @@ const clickDayBtn = (day, index) => {
     translateX.value =
       translateX.value - left + gap;
   }
+  prevX = translateX.value;
   selectedDay.value = day;
 };
 
