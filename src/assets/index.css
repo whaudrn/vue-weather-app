@@ -549,9 +549,10 @@ h1 {
   }
 
 
-  .favor {
+  /* .favor {
+    height: auto;
     min-height: 400px;
-  }
+  } */
 
 
   .mapWrap {
