@@ -572,13 +572,12 @@ h1 {
   }
 
   .forecast .btnWrap {
-    overflow-x: auto;
+     flex-wrap: wrap;
+  gap: 8px;
   }
 
   .forecast .btnWrap button {
-    width: auto;
-    min-width: 70px;
-    flex-shrink: 0;
+    width: calc(33.333% - 6px);
     font-size: 14px;
     padding: 5px;
   }
