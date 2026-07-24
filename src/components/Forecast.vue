@@ -43,13 +43,13 @@ watch(
 
 const startDrag = (e) => {
   isDragging.value = true;
-  startX = e.pageX;
+  startX = e.clientX;
   e.currentTarget.setPointerCapture(e.pointerId);
 };
 
 const moveDrag = (e) => {
   if (!isDragging.value) return;
-  moveX = e.pageX - startX;
+  moveX = e.clientX - startX;
   const total = prevX + moveX;
   if (total > 0) {
     translateX.value = 0;

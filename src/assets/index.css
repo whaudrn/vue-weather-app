@@ -373,7 +373,7 @@ h1 {
   gap: 10px;
   user-select: none;
   margin-bottom: 20px;
-  /* transition: 0.5s; */
+  transition: 0.5s;
 }
 
 .forecast .slide.noTransition {
