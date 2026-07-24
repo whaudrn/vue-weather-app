@@ -365,7 +365,7 @@ h1 {
 
 .forecast .slide {
   width: fit-content;
-
+  touch-action: pan-y;
   display: flex;
   justify-content: flex-start;
   align-items: center;
