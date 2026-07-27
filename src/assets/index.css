@@ -39,7 +39,7 @@ button {
   top: 0;
   left: 0;
   right: 0;
-  height: 180px;
+  height: 210px;
   z-index: 999;
   background: linear-gradient(180deg,
       #eef7ff 0%,
@@ -185,7 +185,7 @@ h1 {
   position: fixed;
   left: 20px;
   right: 20px;
-  top: 135px;
+  top: 145px;
   z-index: 1000;
 
   margin-bottom: 10px;
