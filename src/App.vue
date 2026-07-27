@@ -505,13 +505,15 @@ const playAnimation = (target, animationData, loop = false) => {
     <div class="blob blob2"></div>
     <div class="blob blob3"></div>
   </div>
-  <h1>현재 날씨 및 예보 앱</h1>
   <div class="wrap">
     <div class="left">
-      <CurrentLocation :favoriteList="favoriteList" :address="address" :hasAddress="hasAddress"
-        @addFavorite="addFavorite" />
-      <SearchBox :recentList="recentList" @loadLocation="loadLocation" @searchLocation="searchLocation"
-        @delRecentList="delRecentList" />
+      <div class="stickyHeader">
+        <h1>현재 날씨 및 예보 앱</h1>
+        <CurrentLocation :favoriteList="favoriteList" :address="address" :hasAddress="hasAddress"
+          @addFavorite="addFavorite" />
+        <SearchBox :recentList="recentList" @loadLocation="loadLocation" @searchLocation="searchLocation"
+          @delRecentList="delRecentList" />
+      </div>
       <FavoriteList :favoriteList="favoriteList" :selectedFavorDiv="selectedFavorDiv" @deleteFavorite="deleteFavorite"
         @deleteAllFavorites="deleteAllFavorites" @select="selectedFavorDiv = $event"
         @clearSelect="selectedFavorDiv = null" @selectFavorite="selectFavorite" />
