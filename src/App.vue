@@ -506,7 +506,6 @@ const playAnimation = (target, animationData, loop = false) => {
     <div class="blob blob3"></div>
   </div>
   <h1>현재 날씨 및 예보 앱</h1>
-  <div class="mobileFixedBg"></div>
   <div class="wrap">
     <div class="left">
       <CurrentLocation :favoriteList="favoriteList" :address="address" :hasAddress="hasAddress"

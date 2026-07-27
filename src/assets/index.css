@@ -26,11 +26,11 @@ button {
   padding: 20px 50px;
   gap: 30px;
 }
-
+/* 
 .wrap .left {
   flex: 1 1 400px;
   max-width: 500px;
-}
+} */
 
 h1 {
   font-size: 50px;
@@ -362,9 +362,11 @@ h1 {
   border: 1px solid rgba(0, 0, 0, 0.4);
   border-radius: 10px;
 }
+
 .forecast .slideWrapper {
   overflow: hidden;
 }
+
 .forecast .slideWrapper .slide {
   padding: 2px;
   width: fit-content;
@@ -503,13 +505,22 @@ h1 {
 
 }
 
-/* .mobileFixedBg {
-  display: none;
-} */
-
 @media (max-width:600px) {
 
   /* 현재 위치 + 검색창 고정 */
+  .wrap::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 180px;
+    z-index: 999;
+
+    background: linear-gradient(180deg,
+        #eef7ff 0%,
+        rgba(238, 247, 255, 0.95) 100%);
+  }
 
   h1,
   .currentLocation,
@@ -520,8 +531,8 @@ h1 {
     z-index: 1000;
 
     /* 기존 배경과 자연스럽게 */
-    background: rgba(238, 247, 255, 0.75);
-    /* backdrop-filter: blur(10px); */
+    background: rgba(238, 247, 255, 0.92);
+    backdrop-filter: blur(10px);
   }
 
 
