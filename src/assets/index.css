@@ -50,11 +50,12 @@ button {
   margin: 0;
 
   /* 주변 배경과 완전히 동화되는 불투명 단색 배경 */
-  background-color: #eef7ff; 
+  background-color: #eef7ff;
 
   /* 아래로 스크롤되는 목록들이 헤더 밑으로 파고들 때 완전히 차단되도록 확실하게 보장 */
   box-shadow: 0 10px 15px -5px #eef7ff;
 }
+
 .stickyHeader h1,
 .stickyHeader .currentLocation,
 .stickyHeader .inputArea {
@@ -66,7 +67,7 @@ button {
   background: none;
   backdrop-filter: none;
   margin-bottom: 0;
-   background: linear-gradient(160deg,
+  background: linear-gradient(160deg,
       #eef7ff 0%,
       #e3f2fd 45%,
       #f5fbff 100%);
@@ -76,7 +77,7 @@ button {
   width: 100%;
   max-width: 700px;
 }
- 
+
 .wrap .right {
   width: 100%;
   flex: 1 1 600px;
@@ -190,7 +191,7 @@ h1 {
 }
 
 .stickyHeader .inputArea {
-  position: relative!important;
+  position: relative !important;
   background: #eef7ff;
   display: flex;
   gap: 5px;
@@ -263,15 +264,31 @@ h1 {
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.5); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes pulse2 {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.02); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.02);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 .mapWrap {
@@ -430,7 +447,7 @@ h1 {
   width: calc(33.333% - 6px);
   border: 1px solid rgba(0, 0, 0, 0.4);
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 18px;
   padding: 5px;
 }
 
@@ -484,9 +501,17 @@ h1 {
 }
 
 @keyframes float {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(120px, -80px) scale(1.2); }
-  100% { transform: translate(-80px, 100px) scale(.9); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(120px, -80px) scale(1.2);
+  }
+
+  100% {
+    transform: translate(-80px, 100px) scale(.9);
+  }
 }
 
 /* =========================================
@@ -500,7 +525,11 @@ h1 {
   }
 
   h1 {
-    font-size: 50px;
+    font-size: 48px;
+  }
+
+  .wrap .left {
+    width: 100%;
   }
 
   .mapWrap {
@@ -516,7 +545,31 @@ h1 {
   }
 
   .forecast {
-    height: 226px;
+    height: auto;
+  }
+
+  .forecast .btnWrap button {
+    font-size: 20px;
+  }
+}
+
+/* =========================================
+   DESKTOP (1281px~)
+   ========================================= */
+@media (min-width: 1281px) {
+
+  h1 {
+    font-size: 48px;
+  }
+
+  .wrap {
+    flex-wrap: nowrap;
+    padding: 20px 50px;
+  }
+
+  .wrap .left,
+  .wrap .right {
+    width: auto;
   }
 
   .forecast .btnWrap {
@@ -526,22 +579,7 @@ h1 {
 
   .forecast .btnWrap button {
     width: 15%;
-    font-size: 20px;
+    font-size: 22px;
     padding: 5px 10px;
-  }
-}
-
-/* =========================================
-   DESKTOP (1281px~)
-   ========================================= */
-@media (min-width: 1281px) {
-
-  .wrap {
-    padding: 20px 50px;
-  }
-
-  .wrap .left,
-  .wrap .right {
-    width: auto;
   }
 }
