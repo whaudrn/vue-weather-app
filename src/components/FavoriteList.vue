@@ -6,6 +6,7 @@ import rename from '../assets/images/rename.png';
 import save from '../assets/images/save.png';
 import minus from '../assets/images/minus.png'
 import star2 from '../assets/star2.png';
+import down from '../assets/images/down.png';
 
 const {
   favoriteList,
@@ -23,23 +24,53 @@ const emit = defineEmits([
   "selectFavorite",
 ])
 
-const hoverItem = ref(null);
+const favorListRef = ref(null);
 const inputRef = ref(null)
-const favorRef = ref(null);
+const openBtnRef = ref(null)
+
+const hoverItem = ref(null);
 const editFavor = ref(null)
 const editText = ref("")
+const isClose = ref(false)
+const currentDeg = ref(0)
 
 const favoriteCount = computed(() => favoriteList.length);
 
-onMounted(() => { document.addEventListener("pointerdown", handleFavorOutsideClick); })
+onMounted(async () => {
+  document.addEventListener("pointerdown", handleFavorOutsideClick);
+  await nextTick();
+  updateHeight()
+})
 onUnmounted(() => { document.removeEventListener("pointerdown", handleFavorOutsideClick); })
 
 const deleteFavorite = (item) => { emit("deleteFavorite", item) }
 const deleteAllFavorites = () => { emit("deleteAllFavorites") }
 
+const toggleAccordion = () => {
+  isClose.value = !isClose.value;
+  currentDeg.value += 180;
+  openBtnRef.value.style.transform = `rotate(${currentDeg.value}deg)`
+  updateHeight();
+}
+watch(() => favoriteList, async () => {
+  await nextTick();
+  updateHeight()
+}, { deep: true, immediate: true });
+
+const updateHeight = () => {
+  if (!favorListRef.value) return;
+
+  if (isClose.value) {
+    favorListRef.value.style.maxHeight = "0px";
+  } else {
+    favorListRef.value.style.maxHeight = `${favorListRef.value.scrollHeight}px`
+  }
+  console.log(favorListRef.value.scrollHeight);
+}
+
 const handleFavorOutsideClick = (e) => {
-  if (!favorRef.value) return;
-  if (!favorRef.value.contains(e.target)) {
+  if (!favorListRef.value) return;
+  if (!favorListRef.value.contains(e.target)) {
     emit("clearSelect")
   }
 }
@@ -66,9 +97,12 @@ const saveRename = (item) => {
   <div class="favor">
     <div class="favorHead">
       <p>관심지역({{ favoriteCount }}/10)</p>
-      <button @click="deleteAllFavorites">전체삭제</button>
+      <div class="btnBox">
+        <button class="openBtn" @click="toggleAccordion"><img :src="down" ref="openBtnRef"></button>
+        <button class="delAll" @click="deleteAllFavorites">전체삭제</button>
+      </div>
     </div>
-    <div class="favorList" ref="favorRef">
+    <div class="favorList" :class="{ close: isClose }" ref="favorListRef">
       <div :class="{ highlight: selectedFavorDiv === item.add }" v-for="item in favoriteList" :key="item.add"
         @pointerdown="emit('selectFavorite', item)" @dblclick.stop="startRename(item)">
         <div v-if="editFavor === item.add" class="reName">

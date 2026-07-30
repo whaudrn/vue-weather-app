@@ -4,6 +4,10 @@
   --border: 1px solid rgba(0, 0, 0, .4);
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 button {
   background: none;
   border: none;
@@ -32,60 +36,16 @@ button {
   position: relative;
 }
 
-/* 세 컴포넌트(h1, currentLocation, inputArea)를 감싸는 헤더 wrapper.
-   마크업에서 이 셋을 <div class="stickyHeader"> 로 감싸주세요. */
-.stickyHeader {
-  position: sticky;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-
-  /* 마진으로 억지로 밖으로 빼지 말고 안쪽에서 깔끔하게 패딩 먹이기 */
-  padding: 15px 0;
-  margin: 0;
-
-  /* 주변 배경과 완전히 동화되는 불투명 단색 배경 */
-  background-color: #eef7ff;
-
-  /* 아래로 스크롤되는 목록들이 헤더 밑으로 파고들 때 완전히 차단되도록 확실하게 보장 */
-  box-shadow: 0 10px 15px -5px #eef7ff;
-}
-
-.stickyHeader h1,
-.stickyHeader .currentLocation,
-.stickyHeader .inputArea {
-  position: static;
-  left: auto;
-  right: auto;
-  top: auto;
-  z-index: auto;
-  background: none;
-  backdrop-filter: none;
-  margin-bottom: 0;
-  background: linear-gradient(160deg,
-      #eef7ff 0%,
-      #e3f2fd 45%,
-      #f5fbff 100%);
-}
-
-.wrap .left {
-  width: 100%;
-  max-width: 700px;
-}
-
+.wrap .left,
 .wrap .right {
   width: 100%;
-  flex: 1 1 600px;
-  max-width: 700px;
+  min-width: 450px;
+  max-width: 580px;
 }
 
 h1 {
-  font-size: 32px;
+  padding: 20px;
+  font-size: 30px;
   text-align: center;
 }
 
@@ -105,7 +65,20 @@ h1 {
   margin-bottom: 10px;
 }
 
-.favor .favorHead button {
+.favor .favorHead button.openBtn {
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #747477;
+  border-radius: 50%;
+}
+
+.favor .favorHead button.openBtn>img {
+  width: 100%;
+  transition: all .5s;
+}
+
+.favor .favorHead button.delAll {
   font-size: 20px;
   border: 1px solid rgba(0, 0, 0, 0.4);
   border-radius: 10px;
@@ -114,13 +87,20 @@ h1 {
 
 .favor .favorList {
   width: 100%;
-  height: fit-content;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
   gap: 10px;
   margin-bottom: 10px;
+  overflow: hidden;
+  transition: 0.2s ease-out;
+}
+
+.favor .favorList.close {
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.2s ease-out;
 }
 
 .favor .favorList>div {
@@ -165,6 +145,7 @@ h1 {
   border-radius: 10px;
   padding: 10px;
   font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .currentLocation div {
@@ -190,14 +171,15 @@ h1 {
   height: 30px;
 }
 
-.stickyHeader .inputArea {
-  position: relative !important;
+.inputArea {
+  position: relative;
   background: #eef7ff;
   display: flex;
   gap: 5px;
   font-size: 25px;
   border: 1px solid rgba(0, 0, 0, 0.4);
   border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .inputArea.on {
@@ -519,21 +501,10 @@ h1 {
    ========================================= */
 @media (min-width: 601px) {
 
-  .stickyHeader {
-    padding: 20px 0 10px;
-    margin: -20px 0 10px;
-  }
-
-  h1 {
-    font-size: 48px;
-  }
-
-  .wrap .left {
+  .wrap .left,
+  .wrap .right {
     width: 100%;
-  }
-
-  .mapWrap {
-    aspect-ratio: 7 / 5;
+    max-width: 800px;
   }
 
   .weatherBox {
@@ -558,18 +529,18 @@ h1 {
    ========================================= */
 @media (min-width: 1281px) {
 
-  h1 {
-    font-size: 48px;
-  }
 
   .wrap {
     flex-wrap: nowrap;
     padding: 20px 50px;
   }
 
-  .wrap .left,
-  .wrap .right {
-    width: auto;
+  .favor .favorHead button.openBtn {
+    display: none;
+  }
+
+  .favor .favorList {
+    max-height: none !important;
   }
 
   .forecast .btnWrap {

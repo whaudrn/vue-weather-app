@@ -4,7 +4,7 @@
 // Vue / Libraries
 // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 import lottie from "lottie-web";
-import { ref, onMounted, onUnmounted, computed, watch } from 'vue';
+import { ref, onMounted, computed, watch } from 'vue';
 import axios from 'axios';
 
 
@@ -507,13 +507,11 @@ const playAnimation = (target, animationData, loop = false) => {
   </div>
   <div class="wrap">
     <div class="left">
-      <div class="stickyHeader">
-        <h1>현재 날씨 및 예보 앱</h1>
-        <CurrentLocation :favoriteList="favoriteList" :address="address" :hasAddress="hasAddress"
-          @addFavorite="addFavorite" />
-        <SearchBox :recentList="recentList" @loadLocation="loadLocation" @searchLocation="searchLocation"
-          @delRecentList="delRecentList" />
-      </div>
+      <h1>현재 날씨 및 예보 앱</h1>
+      <CurrentLocation :favoriteList="favoriteList" :address="address" :hasAddress="hasAddress"
+        @addFavorite="addFavorite" />
+      <SearchBox :recentList="recentList" @loadLocation="loadLocation" @searchLocation="searchLocation"
+        @delRecentList="delRecentList" />
       <FavoriteList :favoriteList="favoriteList" :selectedFavorDiv="selectedFavorDiv" @deleteFavorite="deleteFavorite"
         @deleteAllFavorites="deleteAllFavorites" @select="selectedFavorDiv = $event"
         @clearSelect="selectedFavorDiv = null" @selectFavorite="selectFavorite" />
