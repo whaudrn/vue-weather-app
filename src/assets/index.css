@@ -39,7 +39,7 @@ button {
 .wrap .left,
 .wrap .right {
   width: 100%;
-  min-width: 450px;
+  min-width: 350px;
   max-width: 580px;
 }
 
